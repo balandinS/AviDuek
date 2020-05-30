@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector} from 'react-redux'
+import { useSelector} from 'react-redux';
 import styled from "styled-components";
 
 const LinkStyled = styled(NavLink)`
@@ -25,5 +25,7 @@ const LinkStyled = styled(NavLink)`
 `;
 export default function Link({ link, path }) {
   const open = useSelector(state => state.menuBarIsOpen)
-  return <LinkStyled open={open} exact activeClassName="active"  to={path}>{link}</LinkStyled>;
+  return <LinkStyled open={open} exact activeClassName="active" to={path}  onClick={() =>  {
+    console.log('path')
+  }}>{link}</LinkStyled>;
 }
