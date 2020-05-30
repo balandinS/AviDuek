@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import About from "./AboutComponent/About";
 import Title from "../UI/Title";
 import Greeting from "../UI/GreetingComponent/Greeting";
@@ -6,7 +6,7 @@ import Paralax from "../UI/Paralax";
 import Contact from "../ContactComponent/Contact";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../action";
+import { fetchProducts, setPositionElement } from "../../action";
 import styled from "styled-components";
 import Spinner from "../UI/Spinner/Spinner";
 
@@ -49,17 +49,28 @@ const List = styled.div`
 `;
 export default (props) => {
   const products = useSelector((state) => state.products);
+  const positionElement = useSelector(state => state.positionElement)
   const dispatch = new useDispatch();
+  const refDiv = useRef('')
   let history = useHistory();
   useEffect(() => {
     dispatch(fetchProducts("products"));
+    window.scroll(positionElement.y, positionElement.x)
   }, [dispatch]);
 
   const renderProducts = () => {
     if ((products.length === 0) | !Array.isArray(products)) return <Spinner />;
 
     return products.map((product, index) => (
-      <div key={product.productId} className="card-container">
+      <div 
+      ref={refDiv} 
+      key={product.productId} 
+      className="card-container"
+      onClick={() => {
+       const { right, bottom } = refDiv.current.getBoundingClientRect() 
+       dispatch(setPositionElement({x: right, y: bottom}))
+      }}
+      >
         <div className="image-container">
           <img
             className="image"

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGallery } from "../../action";
+import { fetchGallery, setPositionElement } from "../../action";
 import Greeting from "../UI/GreetingComponent/Greeting";
 import Title from "../UI/Title";
 import Contact from "../ContactComponent/Contact";
@@ -20,10 +20,12 @@ const Gallery = styled.div`
 
 export default () => {
   const gallery = useSelector((state) => state.gallery);
+  const positionElement = useSelector(state => state.positionElement)
   const dispatch = new useDispatch();
-
+  const refDiv = useRef('')
   useEffect(() => {
     dispatch(fetchGallery("gallery"));
+    window.scroll(positionElement.y, positionElement.x)
   }, [dispatch]);
 
   const renderImages = () => {
@@ -31,7 +33,16 @@ export default () => {
       return <Spinner />;
 
     return gallery.map((image, index) => (
-      <ImageBox key={image.productId} image={image.image} index={index} />
+      <ImageBox 
+      ref={refDiv} 
+      key={image.productId} 
+      image={image.image} 
+      index={index} 
+      onClick={() => {
+        const { right, bottom } = refDiv.current.getBoundingClientRect() 
+        dispatch(setPositionElement({x: right, y: bottom}))
+       }}
+      />
     ));
   };
   return (

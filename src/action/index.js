@@ -27,3 +27,20 @@ export const fetchImg = (path, id) => async dispatch => {
     payload
   })
 }
+
+export const setPositionElement = element => {
+   return {
+     type: TYPE.SET_POSITION_ELEMENT,
+     payload: {
+       x: element.x,
+       y: element.y
+     }
+   }
+}
+
+
+export const resetPositionElement = () => {
+  return {
+    type: TYPE.RESET_POSITION_ELEMENT,
+  }
+}

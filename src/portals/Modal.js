@@ -61,7 +61,6 @@ const ModalComponent = () => {
   const dispatch = new useDispatch();
   useEffect(() => {
     dispatch(fetchImg(path,id));
-    console.log(image)
   }, [image, dispatch, id, path]);
   return (
     <>
