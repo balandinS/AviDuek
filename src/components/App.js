@@ -5,9 +5,11 @@ import Haeder from "./HeaderComponent/Header";
 import Main from "../RouterMain/Main";
 import ModalMain from "../RouterMain/ModalMain";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {faAngleUp, faTimes} from '@fortawesome/free-solid-svg-icons'
 import Totop from "./UI/Totop";
-library.add(faFacebook, faInstagram);
+library.add(fab, faFacebook, faInstagram, faAngleUp, faTimes);
 
 const Content = styled.div`
   display: flex;

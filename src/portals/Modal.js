@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchImg } from "../action";
 import styled from "styled-components";
 import SlideDown from './ModalAnimation'
-import Spinner from '../components/UI/Spinner/Spinner'
+import Spinner from '../components/UI/Spinner/Spinner';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 const Container = styled.div`
   width: 100%;
   position: absolute;
@@ -33,7 +34,6 @@ const ImageConatiner = styled.div`
   z-index: 99;
   height: 100%;
   width: 100%;
- 
   justify-content: center;
   align-items: center;
   .imageBox {
@@ -43,12 +43,13 @@ const ImageConatiner = styled.div`
     animation-name: ${SlideDown};
     animation-duration: 1s;
     animation-timing-function: ease;
-    background-color: whitesmoke;
+    background-color: rgba(255,255,255, 1);
     border-radius: 5px;
     transition: .4s ease-in-out;
+    overflow: hidden
   }
   img{
-    height: 100%;
+    height: 80%;
     width: 100%;
     border-radius: 5px;
     object-fit: scale-down;
@@ -82,6 +83,7 @@ const ModalComponent = () => {
     }}>
     <ImageConatiner>
         <div className="imageBox">
+        <FontAwesomeIcon style={{marginRight: '5px'}}  icon={'times'} size='2x' color="#a25f4b"/>
           {image === ''? <Spinner /> : <img src={image} alt="zoomed" />}
         </div>
       </ImageConatiner>

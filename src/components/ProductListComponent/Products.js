@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import About from "./AboutComponent/About";
 import Title from "../UI/Title";
 import Greeting from "../UI/GreetingComponent/Greeting";
@@ -16,6 +16,10 @@ const List = styled.div`
   margin: 0 auto;
   flex-direction: row-reverse;
   flex-wrap: wrap;
+
+  @media(max-width:1002px){
+    justify-content: center;
+  }
   .card-container {
     width: 220px;
     margin: 5px;
@@ -47,18 +51,20 @@ const List = styled.div`
     text-align: center;
   }
 `;
+
 export default (props) => {
   const products = useSelector((state) => state.products);
   const positionElement = useSelector(state => state.positionElement)
   const dispatch = new useDispatch();
   const refDiv = useRef('')
   let history = useHistory();
+  
   useEffect(() => {
     dispatch(fetchProducts("products"));
     window.scroll(positionElement.y, positionElement.x)
   }, [dispatch]);
 
-  const renderProducts = () => {
+  const renderProducts = useMemo(() => {
     if ((products.length === 0) | !Array.isArray(products)) return <Spinner />;
 
     return products.map((product, index) => (
@@ -84,14 +90,14 @@ export default (props) => {
         <p>{product.name}</p>
       </div>
     ));
-  };
+  }, [products]);
 
   return (
     <div>
       <Greeting page="גלה את המוצרים שלנו" />
       <About />
       <Title title="מוצרים שלנו" />
-      <List>{renderProducts()}</List>
+      <List>{renderProducts}</List>
       <Paralax />
       <Title title="אנשי קשר" />
       <Contact />

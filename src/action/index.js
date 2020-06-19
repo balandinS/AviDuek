@@ -44,3 +44,15 @@ export const resetPositionElement = () => {
     type: TYPE.RESET_POSITION_ELEMENT,
   }
 }
+
+export const hideToUp = () => {
+  return {
+    type: TYPE.HIDE_TO_UP
+  }
+}
+
+export const displayToUp = () => {
+  return {
+    type: TYPE.DISPLAY_TO_UP
+  }
+}

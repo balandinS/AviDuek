@@ -1,4 +1,4 @@
-import React, { useEffect, useRef  } from "react";
+import React, { useEffect, useRef, useMemo  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGallery, setPositionElement } from "../../action";
 import Greeting from "../UI/GreetingComponent/Greeting";
@@ -28,7 +28,7 @@ export default () => {
     window.scroll(positionElement.y, positionElement.x)
   }, [dispatch]);
 
-  const renderImages = () => {
+  const renderImages = useMemo(() => {
     if (!Array.isArray(gallery) || gallery.length === 0)
       return <Spinner />;
 
@@ -44,12 +44,12 @@ export default () => {
        }}
       />
     ));
-  };
+  }, [gallery]);
   return (
     <div>
       <Greeting page="גלריה שלנו" />
       <Title title="גלריה" />
-      <Gallery>{renderImages()}</Gallery>
+      <Gallery>{renderImages}</Gallery>
       <Paralax />
       <Title title="אנשי קשר" />
       <Contact />
