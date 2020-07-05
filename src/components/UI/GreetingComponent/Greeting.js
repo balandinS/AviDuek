@@ -26,6 +26,7 @@ const Greeting = styled.div`
     margin: 10px 0;
     animation-name: ${translateRight};
     animation-duration: 2s;
+    font-size: 1.2em;
   }
   .body {
     height: 30px;
@@ -34,6 +35,7 @@ const Greeting = styled.div`
     margin-bottom: 30px;
     animation-name: ${translateRight};
     animation-duration: 2s;
+    font-size: 1.2em;
   }
   div {
     display: inline-block;
@@ -45,10 +47,12 @@ const Greeting = styled.div`
     animation-name: ${translatedown};
     animation-duration: 3s;
     margin: 0;
-    background-color: #ffffff;
     border-radius: 10%;
     translate: all;
     height: auto;
+    p{
+      font-size: 1.2em;
+    }
   }
 
   @media (max-width: 863px) {

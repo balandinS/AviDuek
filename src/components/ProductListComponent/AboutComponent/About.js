@@ -13,6 +13,8 @@ const AboutStyled = styled.div`
     align-items: center;
   a {
     color: #a25f4b;
+    text-decoration: none;
+    font-size: 1.2em;
   }
   ul{
     margin: 10px 0 0 0;
@@ -20,6 +22,7 @@ const AboutStyled = styled.div`
   p {
     margin: 5px 0 5px 0;
     color: #7f8c8d;
+    font-size: 1.2em;
   }
   li {
     color: #7f8c8d;
@@ -45,7 +48,7 @@ export default (props) => {
       <ul>{renderTastes()}</ul>
       <p>
         להזמנות דואק אבי פאלאפון:
-        <span style={{ color: "#a25f4b" }}> 0537719007 </span>
+        <span style={{ color: "#a25f4b" }}> <a href="tel:0537719007" >0537719007</a> </span>
       </p>
       <a rel="noopener noreferrer" href="https://m.facebook.com/story.php?story_fbid=154771589368390&id=104758734369676" target="_blank">קישור לעמוד עסקי בפייסבוק</a>
     </AboutStyled>

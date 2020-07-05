@@ -12,10 +12,14 @@ const Contact = styled.section`
   text-align: center;
   p{
     color: #7f8c8d;
-    
+    font-size: 1.2em;
   }
   h2{
+    a {
       color:  #a25f4b;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
   }
  .container-icon{
       cursor: pointer;
@@ -32,10 +36,10 @@ export default () => {
       <div>
         <div>
           <p> להזמנות דואק אבי פאלאפון</p>
-          <h2>0537719007</h2>
+          <h2><a href="tel:0537719007" >0537719007</a></h2>
           <p>ימי ראשון - חמישי 10:00-20:00</p>
           <p>יום שישי 09:00-14:00</p>
-          <a rel="noopener noreferrer" href="https://m.facebook.com/story.php?story_fbid=154771589368390&id=104758734369676" target="_blank">
+          <a rel="noopener noreferrer" href="https://www.facebook.com/%D7%A9%D7%95%D7%A7%D7%95%D7%9C%D7%98%D7%94-%D7%93%D7%95%D7%90%D7%A7-%D7%90%D7%91%D7%99-104758734369676/" target="_blank">
             <FontAwesomeIcon className="container-icon" icon={["fab", "facebook"]}  size="4x" color="#a25f4b"/>
           </a>
           <a rel="noopener noreferrer" href="https://instagram.com/chocolate_douak_avi?igshid=c3n9f28cl095" target="_blank">
